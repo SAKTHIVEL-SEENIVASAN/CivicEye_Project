@@ -13,21 +13,21 @@
         }
 
         body {
-    background: url("{{ url_for('static', filename='golab_run.gif') }}") no-repeat center center fixed;
-    background-size: cover;
-    min-height: 100vh;
-    padding: 2rem 1rem;
-}
-body::before {
-    content: "";
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.55);
-    top: 0;
-    left: 0;
-    z-index: -1;
-}
+            background: url("{{ url_for('static', filename='golab_run.gif') }}") no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.55);
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
 
         .app-container {
             max-width: 1300px;
@@ -281,19 +281,19 @@ body::before {
         const capturedPreview = document.getElementById('capturedPreview');
         let imageCaptured = false;
 
-// Start camera (use BACK camera on mobile)
-navigator.mediaDevices.getUserMedia({
-    video: { facingMode: { exact: "environment" } }
-})
-.then(stream => { video.srcObject = stream; })
-.catch(() => {
-    // fallback if exact fails
-    navigator.mediaDevices.getUserMedia({
-        video: { facingMode: "environment" }
-    })
-    .then(stream => { video.srcObject = stream; })
-    .catch(err => alert("Camera error: " + err.message));
-});
+        // Start camera (use BACK camera on mobile)
+        navigator.mediaDevices.getUserMedia({
+            video: { facingMode: { exact: "environment" } }
+        })
+        .then(stream => { video.srcObject = stream; })
+        .catch(() => {
+            // fallback if exact fails
+            navigator.mediaDevices.getUserMedia({
+                video: { facingMode: "environment" }
+            })
+            .then(stream => { video.srcObject = stream; })
+            .catch(err => alert("Camera error: " + err.message));
+        });
 
         // Helper: resize image to avoid 413 error
         function resizeImage(base64Str, maxWidth = 1024, quality = 0.85) {
@@ -373,7 +373,7 @@ navigator.mediaDevices.getUserMedia({
         <div class="slogan-box">
             🌟 "See It, Snap It, Solve It – Together for Smarter Cities" 🌟
         </div>
-        <h2> What is CivicEye?</h2>
+        <h2>📌 What is CivicEye?</h2>
         <p>CivicEye is a simplified citizen–authority bridge. Citizens capture photos of civic issues, and the system automatically attaches GPS coordinates and timestamp, then emails the report to authorities.</p>
         <h2>⚙️ How It Works</h2>
         <p>1️⃣ Open website → Camera access.<br>2️⃣ Capture photo.<br>3️⃣ Auto geolocation + date/time.<br>4️⃣ Add description (optional).<br>5️⃣ Send → Email with image + location + details.</p>
@@ -388,10 +388,10 @@ navigator.mediaDevices.getUserMedia({
         </div>
         <h2>🎯 Key Features</h2>
         <ul style="margin-left:1.8rem; line-height:1.6;">
-            <li>1) One‑click camera capture</li>
-            <li>2) Auto geo‑tag & timestamp</li>
-            <li>3) Email with photo + details</li>
-            <li>4) Works on mobile/desktop</li>
+            <li>✅ One‑click camera capture</li>
+            <li>✅ Auto geo‑tag & timestamp</li>
+            <li>✅ Email with photo + details</li>
+            <li>✅ Works on mobile/desktop</li>
         </ul>
         <div class="footer" style="margin-top:20px;"><strong>Final Year Project – CivicEye</strong></div>
     </div>

@@ -7,9 +7,9 @@ import os
 # ===== CONFIGURE YOUR EMAIL SETTINGS =====
 SMTP_SERVER = 'smtp.gmail.com'
 SMTP_PORT = 587
-SENDER_EMAIL = 's.m.sakthivelofficial@gmail.com'      # CHANGE THIS
-SENDER_PASSWORD = 'yrknxpsacnxjamyu'      # USE GMAIL APP PASSWORD (not regular password)
-RECEIVER_EMAIL = 'sakthivelsm.ai@gmail.com'   # CHANGE TO AUTHORITY EMAIL
+SENDER_EMAIL = 's.m.sakthivelofficial@gmail.com'      # YOUR GMAIL
+SENDER_PASSWORD = 'yrknxpsacnxjamyu'                  # APP PASSWORD
+RECEIVER_EMAIL = 'sakthivelsm.ai@gmail.com'           # WHERE REPORTS GO
 # =========================================
 
 def send_email_report(image_path, lat, lon, report_time, description):
@@ -23,7 +23,7 @@ def send_email_report(image_path, lat, lon, report_time, description):
         msg['To'] = RECEIVER_EMAIL
         msg['Subject'] = f'Civic Issue Report - {report_time}'
 
-        # Email body (plain text + HTML)
+        # Email body (HTML)
         body = f"""
         <h2>New Citizen Report via CivicEye</h2>
         <p><strong>📍 Location:</strong><br>
@@ -37,7 +37,7 @@ def send_email_report(image_path, lat, lon, report_time, description):
         """
         msg.attach(MIMEText(body, 'html'))
 
-        # Attach image
+        # Attach image if it exists
         if os.path.exists(image_path):
             with open(image_path, 'rb') as f:
                 img = MIMEImage(f.read(), name=os.path.basename(image_path))
@@ -49,8 +49,9 @@ def send_email_report(image_path, lat, lon, report_time, description):
         server.login(SENDER_EMAIL, SENDER_PASSWORD)
         server.send_message(msg)
         server.quit()
+        print("✅ Email sent successfully!")
         return True
 
     except Exception as e:
-        print("Email sending failed:", e)
+        print("❌ Email sending failed:", e)
         return False

@@ -39,7 +39,8 @@ def send_report():
         with open(image_path, 'wb') as f:
             f.write(img_bytes)
 
-        success = True
+        # **FIX: Actually send the email**
+        success = send_email_report(image_path, lat, lon, time_val, desc)
 
         if success:
             flash('✅ Report sent successfully to authorities!', 'success')
@@ -54,8 +55,6 @@ def send_report():
         print(e)
 
     return redirect(url_for('home'))
-
-
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
