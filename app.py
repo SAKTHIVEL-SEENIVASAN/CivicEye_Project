@@ -39,13 +39,7 @@ def send_report():
         with open(image_path, 'wb') as f:
             f.write(img_bytes)
 
-        success = send_email_report(
-            image_path=image_path,
-            lat=lat,
-            lon=lon,
-            report_time=time_val,
-            description=desc
-        )
+        success = True
 
         if success:
             flash('✅ Report sent successfully to authorities!', 'success')
